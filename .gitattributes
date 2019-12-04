@@ -1,5 +1,5 @@
 
-#.com/personal/kgulbudak_sabanciuniv_edu/Documents/Sonic%20Pi%20Translate.docx?web=11 – Hoş geldiniz 
+#Kalender
 '''
 Sonic Pi’a hoş geldiniz. Umarım siz de çılgın müzikler yapmaya başlamak için, benim size öğretmek için heyecanlı olduğum kadar heyecanlısınızdır. Müzik, sentez, programlama, kompozisyon, performans ve daha fazlasına doğru eğlenceli bir yolculuğa başlıyoruz.
 
@@ -144,3 +144,330 @@ Basit Başlayın
 
 Öğrenirken muhteşem şeyler yapmanın cazibesini göreceksiniz. Fakat, bu isteği birazcık sonraya saklayın. Şimdilik sadece basit şeyleri düşünüp bundan zevk almaya çalışın ve basit adımlar atın. Aklınıza bu basit adımlar hakkında fikirler geldiğinde onu gerçekleştirmeye çalışın ve verdiği fikirlerle çalın. Gerçekten yol kat etmekle meşgul olmaya başlamadan önce, yaptıklarınızı başkalarıyla paylaşmaktan çekinmeyin
 '''
+#Zeynep
+'''
+2.1- İlk Bipleriniz
+
+Aşağıdaki örnek koda bakalım:
+	play 70
+Bu kod her şeyin başlangıcı. Bu kodu kopyalayıp kod alanına (Run tuşunun altındaki beyaz alan) yapıştır ve sonra Run tuşuna bas!
+
+-Biipp!
+
+Etkileyici! Tekrar bas. Şimdi yine bas. Yine…
+
+Vay be çılgın, Eminim bütün gün boyunca bu tuşa basıp durabilirsin. Fakat kendini sonsuz Beep’lerin içinde kaybetmeden önce, numarayı değiştirmeyi deneyebilirsin:
+
+	play 75
+
+Bir fark duyabiliyor musun? Daha düşük bir numarayı dene:
+
+	play 60
+
+Düşük rakamlar düşük perdede seslere, yüksek rakamlar yüksek perdede seslere yol açıyor. Aynı piyano gibi, piyanonun alt tarafındaki (sol tarafı) tuşlar daha düşük notalar çalarken üst tarafındaki (sağ taraf) tuşlar daha yüksek notaları çalıyor. Aslında bakarsak bu numaralar piyanonun tuşlarına denk geliyor, play 47 demek piyanonun 47’inci notasını çal demek. Bu da demek oluyor ki, play 48 aslında bir nota üstte (sağdan bir nota üstte). 4.oktav C, numara 60 oluyor.
+
+-Akorlar
+
+Tek bir nota çalmak eğlenceli fakat birden fazla notayı aynı anda çalmak çok daha iyi: Alttaki örneği kopyalayıp yapıştır ve dene:
+
+	play 72
+	play 75
+	play 79
+ 
+Senin de fark ettiğin üzere birden fazla play yazdığında hepsi aynı anda çalıyor. Kendin yeni notaları dene, hangileri birlikte güzel oluyor? Hangileri kötü oluyor? Denemekten korkma, keşfet!
+
+-Melodi
+
+Notaları ve akorları oynatmak eğlenceli, fakat bir melodiye ne dersin? Ya bir notayı başka bir notadan sonra oynatmak istersen o zaman napıcaksın? Tek yapman gereken arlarına sleep koymak!
+
+	play 72
+	sleep 1
+	play 75
+	sleep 1
+	play 79
+'''
+#Metehan
+'''
+4 – Tesadüfileştirmek (Randomisation)
+
+Kendi müziğinizi yaparken müziğinize ilginç eklemeler yapmak için rastgele sayılar kullanmak harika bir yoldur. Sonic Pi, müziğinize rastgelelik katmak için harika bir işleve sahiptir ancak, bunları öğrenmeye başlamadan önce bir gerçekle yüzleşmeniz gerekir: Sonic pi tamamen rastgele değildir. Bu ne demek dediğinizi duyar gibiyiz. Gelin beraber görelim.
+
+Tekrarlanabilirlik (Repeatability)
+
+İşte karşınızda rrand (ranged random) fonksiyonu. “rrand” fonksiyonu size iki sayı arasında bir değer bulmanızı sağlayan oldukça kullanışlı bir fonksiyondur. Haydi rastgele bir nota çalalım:
+
+play rrand(50, 95)
+
+	Vay be, rastgele bir nota çalındı. Bilgisayar 83.7527 notasını seçti ve çaldı. 50 ve 95 arasında güzel bir nota. Ah, bir dakika, gerçekten aynı numara mı rastgele bir biçimde geldi? Tekrar oynatmayı deneyin. Nasıl? Yine mi 83.7527? Bu rastgele olamaz!
+
+	Sorunuzun cevabı, rrand gerçekten random değil sahte rastgeledir (pseudo-random). Sonic Pi size rrand fonksiyonuyla tekrarlanan davranışta rastgele benzeri sayılar verecektir. Bu komutu bilgisayarınızda oluşturduğunuz müzikte kullanmanız, her bir bilgisayarda farklı bir müzik yaratmanızı sağlar. Elbette bir rastgelelik fonksiyonu her seferinde 83.7527 sayısını seçse yeterince ilgi çekici olmazdı. Ancak işler göründüğü gibi değil. Gelin hep beraber bakalım:
+
+loop do
+  play rrand(50, 95)
+  sleep 0.5
+end 
+
+	Evet! Sonunda rastgele müziğimiz çalıyor. Belirli çalışmalar içerisinde rastgele fonksiyonlarla yapılan işlemler müzik içinde rastgele değerlere dönüşür. Ancak ilk çalıştırmadan sonraki çalıştırmalarda pseudo-random’dan dolayı her seferinde aynı ses dizisini verecek ve aynı sesler çıkacaktır. Groundhog Müzik sentezi günü!
+
+
+Perili Çanlar (Haunted Bells)
+
+	İşte eylemdeki rastgeleliğin güzel bir örneği olan perili çanların rastgele oran ve uyku süreleri:
+
+loop do
+  sample :perc_bell, rate: (rrand 0.125, 1.5)
+  sleep rrand(0.2, 2)
+end
+
+Rastgele Ayırımlar (Random Cutoff)
+
+	Bir başka eğlenceli rastgelelik örneği ise brleşleri rastgele biçimde ayırmaltır. :tb303 bunun için harika bir örnektir:
+
+use_synth :tb303
+
+loop do
+  play 50, release: 0.1, cutoff: rrand(60, 120)
+  sleep 0.125
+end
+
+Rastgele Kaynaklar (Random Seeds)
+
+	Peki ya rastgele oluşmuş olan müziğimizi değiştirmek istersek ne yapacağız? Bu tamamen use_random_seed ile farklı bir başlangıç seçmeye bağlıdır. Halihazırda kullanılan kaynak değeri 0’dır. Farklı bir kaynak değeri seç ve farklı bir rastgelelik deneyimi yaşa!
+
+5.times do
+  play rrand(50, 100)
+  sleep 0.5
+end
+
+	Bu kod her çalıştırıldığında aynı sırada 5 nota duyulacaktır. Daha farklı sıraya sahip olmak için kaynak değerini değiştir:
+
+use_random_seed 40
+5.times do
+  play rrand(50, 100)
+  sleep 0.5
+end
+
+	Bu kod ise ilkinden tamamen farklı sırada notalar çalar ve bu sefer diğer herkes seninle aynı sırada notaları duyar. 
+
+Choose Fonksiyonu
+
+	Choose fonksiyonu oluşturduğunuz herhangi bir liste içerisinden bir değer seçmeyi sağlayan bir fonksiyondur.
+
+loop do
+  play choose([60, 65, 72])
+  sleep 1
+end
+
+Rrand Fonksiyonu 
+
+	Bu fonksiyonda daha önce bahsetmiştik ancak yine de tekrar edelim. Rrand fonksiyonu sizin girdiğiniz 2 değer arasında herhangi bir gerçek sayı seçer. Seçilen sayılar hiçbir zaman tam sayı olmaz. İşte rrand(20, 110) için bazı örnek değerler:
+
+87.5054931640625
+86.05255126953125
+61.77825927734375
+
+Rrand_i Fonksiyonu
+
+Bazı zamanlarda özellikle rastgele tam sayı kullanmanız gereken durumlarda rrand_i sizi kurtarmaya geliyor. Rrand fonksiyonu ile neredeyse aynı. İşte size örnek rrand_i(20, 110) değerleri:
+
+88
+86
+62
+
+Rand Fonksiyonu
+
+Rand fonksiyonu sizin için 0 (dahil) ve girdiğiniz maksimum değer (dahil değil) arasında rastgele bir sayı seçer. Eğer herhangi bir sayı girmediyseniz maksimum değeri otomatik olarak 1 alır.
+
+loop do
+  play 60, amp: rand
+  sleep 0.25
+end
+
+Rand_i Fonksiyonu
+
+	Rand fonksiyonuyla benzer şekilde çalışan rand_i fonksiyonu değerler arasından rastgele tam sayı seçer.
+
+Dice
+
+	Zar atışına benzeyen dice fonksiyonu ise rrand_i gibi girilen değerler arasından rastgele bir tam sayı seçer ancak bu sefer minimum değer 0 yerine 1’dir.
+
+
+
+One_in
+
+	Son olarak one_in fonksiyonu ise seçilen değerler arasındaki olasılığı bulur. Sayıda 1 ihtimalle True, değilse False sonucunu çıkartır.
+
+Şimdi kodlarınıza biraz rastgelelik ekleyin!
+'''
+#Oğuz
+'''
+KISMİ MODELELR (PARTIAL SAMPLES)
+
+Bu kısımda Sonic Pi’In modellerini daha da çok keşfedeceğiz. Nasıl kullanıldığını göstermiştik. Örneğin:
+sample :loop_amen
+Daha sonra hızlarını nasıl değiştirdiğimiz gördük:
+sample :loop_amen, rate: 0.5
+Daha hafifletmek için:
+sample :loop_amen, rate: 0.5, attack: 1
+Aynı zamanda başlangıcının :sustain komutu ile nasıl başlayacağının yanında attack ve release komutlarını ayarlamak için de kullanılabilir.
+sample :loop_amen, rate: 2, attack: 0.01, sustain:  0, release: 0.35
+Fakat bunun yanında modellerin nerden başlayacağını söyleyebilsek güzel olmaz mıydı?
+
+BAŞLANGIÇ NOKTASI SEÇME (Choosing a starting point)
+
+0 ‘ın başlangıç 1’in son ve 0.5’in yarı yol olduğu, 0 ve 1 arasında sıradan bir başlangıç noktası seçmek mümkün. Alttaki kodda olduğu gibi:
+sample :loop_amen, start: 0.5
+Son çeyreğine nerdesiniz:
+sample :loop_amen, start: 0.75
+
+SON NOKTAYI SEÇME (Choosing a finish point)
+
+Benzer bir şekilde 0 ile 1 arasında sıradan bir bitiş noktası seçilebilir:
+sample :loop_amen, finish: 0.5
+
+BAŞLANGIÇ VE BİTİŞİ BELİRLEME (Specifying start and finish)
+Modelin sadece bir kısmı için:
+Sample :loop_amen, start:0.4, finish: 0.6
+Peki başlangıç noktasının bitişinden daha büyük seçersek ne olur? Tersten çalmaya başlar:
+Sample :loop_amen, start: 0.6, finish: 0.4
+
+HIZ İLE DÜZENLEME (Combining with rate)
+
+Modellerin sadece bir kısmını daha yavaş ya da daha hızlı yapmak ister misin? Şunu bir dene:
+
+sample :loop_amen, start: 0.5, finish: 0.7, rate: 0.2
+
+ZARFLAR İLE DÜZENLEME (Combining with envelopes)
+Sonunda bunların hepsini ADSR zarfları ile daha ilgi çekici bir hale getirebiliriz.
+sample :loop_amen, start: 0.5, finish: 0.8, rate: -0.2, attack: 0.3, release: 1
+Keyfini çıkar!!
+
+3.6
+HARİCİ MODELLER (EXTERNAL SAMPLES)
+Eğer Sonic Pi içerisinde bulunan modeller yetersiz geliyorsa kendi kayıtlarınızı da dahil etmek mümkün. Bunun için parçanızın taşınılabilirliğini kontrol etmek durumundayız.
+
+TAŞINABİLİRLİK (Portability)
+Eğer eserinizi sadece Sonic Pi bünyesindeki modeller ile yaparsanız bunu arkadaşlarınızla dahi paylaşıp keyfini çıkarabilirsiniz.
+Fakat, kendi parça modelleriniz kullanırsanız, arkadaşlarınızla bu parça modeli de paylaşıp eğlenceye devam edebilirsiniz. Göz önünde bulundurulması gereken bir özellik.
+
+YEREL MODELLER (Local Samples)
+Şu şekilde WAV, AIFF veya FLAC tipi dosyaları parça modeller olarak kullanabilirsiniz: 
+#Raspberry Pi, MAC, LINUX
+sample “/Users/kullanıcı_adı/Desktop/parça-modelim.wav”
+#Windows
+sample “C:/Users/kullanıcı_adı/Desktop/parça-modelim.wav”
+Sonic Pi otomatik olarak modeli yükleyi çalacaktır. Aynı zamanda standart komutları kullanarak modeli düzenleyebilirsiniz.
+#Raspberry Pi, MAC, LINUX
+sample “/Users/kullanıcı_adı/Desktop/parça-modelim.wav”, rate: 0.5, amp:0.3
+#Windows
+sample “C:/Users/kullanıcı_adı/Desktop/parça-modelim.wav”, rate: 0.5, amp: 0.3
+
+3.7
+MODEL PAKETLERİ (SAMPLE PACKS)
+NOT: BU kısım Sonic Pi ile uyumlu parça modelleri yaratanlar ve satın alanlar için düzenlenmiştir. Sonic Pi bünyesindeki modeller yeterliyse bu kısmı geçebilirsiniz.
+
+Büyük model dosyaları ile çalışmak biraz sıkıntılı bir durum yaratabilir. Örneğin:
+/path/to/my/modeller/ 
+
+Dosyasında şu modeller olsun:
+
+100_A#_melodi1.wav 
+100_A#_melodi2.wav 
+100_A#_melodi3.wav 
+120_A#_melodi4.wav 
+120_Bb_gitar1.wav 
+120_Bb_piyano1.wav 
+
+Piyano modelini kullanmak için şu yolu deneyebilirsin:
+Sample “/path/to/my/modeller/120_Bb_piyano.wav”
+Sonra gitar modeli için:
+Sample “path/to/my/modeller/120_Bb_gitar1.wav”
+
+Burada dosya ve model isminiz bildiğimiz bir durum var, ya bunları bilmeseydik. 
+
+MODEL PAKETLERİNİ İNDEKSELEME (Indexing Sample Packs)
+Eğer ilk modeli duymak istersen:
+Sample “/path/to/my/modeller/”, 0
+Değişken kullanarak daha basit bir yol izlenebilir.
+modeller = “/path/to/my/modeller/”
+sample modeller, 0
+
+Şimdi ikinci modeli duymak için:
+modeller = “/path/to/my/modeller/”
+sample modeller, 1
+
+Artık modellerin isimlerine gerek duymadığımızı fark ettin mi? Hatta dosyadaki model sayısından daha fazla bir sayı girersen de içlerinden birini çalmaya devam edecektir.
+
+MODEL PAKETLERİ FİLTRELEME (Filtering Sample Packs)
+Genellikle indeksleme yeterli olduğu halde modelleri düzenlemek ve sıralamak için daha çok güce ihtiyacımız var. Tesadüfi, birçok model paketleri yararlı bilgiler içeriyor. Örneğin:
+100_A#_melodi1.wav 
+100_A#_melodi2.wav 
+100_A#_melodi3.wav 
+120_A#_melodi4.wav 
+120_Bb_gitar1.wav 
+120_Bb_piyano1.wav 
+
+Bu isimlerde birden fazla bilgi olduğunu fark ettin mi? 100 ve 120 sayıları modellerin bpm değerini göstermekte. Aynı zamanda A# ve Bb notalarında çalındığını göstermekte.
+
+Bu bilgileri sadece istediklerimizi çalmak amacıyla kullanabiliriz. Örneğin:
+modeller = “/path/to/my/modeller/”
+sample modeller, “120”
+
+Bu kod bizi ilk eşleşen modele götürecek yani gitar1 modeline.
+modeller = “/path/to/my/modeller/”
+sample modeller, “120”, 1
+Bu kod ise bize 120 bpm’deki 2. Eşleşmeyi sağlayacak.
+
+Hatta az sonra görüleceği üzere birden fazla filtre kullanılabilir.
+modeller = “/path/to/my/modeller/”
+sample modeller, “1201, “Bb”,
+
+
+Kaynaklar (Sources)
+
+Model filtresi pre-arg sistemi 2 tür bilgiyi algılıyor: kaynaklar ve filtreler. Kaynaklar potansiyel adaylar için kullanılan bilgi olarak gösterilebilir. Bir kaynak 2 formda olabilir.
+
+1.	 “/path/to/my/modeller/” – bizi geçerli dosyaya ulaştıran bir yol
+2.	 “/path/to/my/modeller/foo.wav” – bizi geçerli modeler ulaştıran bir yol
+
+Sample komutu önce tüm kaynakları toplayarak bir muhtemel aday listesi oluşturuyor. Bu liste önce geçerli yolları ekliyor daha sonra geçerli .flac, .aif, .aiff, .wav, .wave dosyalarını ekliyor. Örneğin:
+
+modeller = "/path/to/my/modeller/"
+modeller2 = "/path/to/my/modeller2/"
+yol= "/path/to/my/samples3/foo.wav"
+
+sample modeller, modeller2, yol, 0  
+
+Varsayılan olarak, yalnızca bir dizindeki örnek dosyalar aday listesine toplanır. Bazen aramak ve filtrelemek istediğiniz birçok iç içe geçmiş model klasörünüz olabilir. Bu nedenle, yolun sonuna ** ekleyerek, belirli bir klasörün tüm alt klasörlerindeki tüm örnekler için özyinelemeli bir arama yapabilirsiniz.
+
+modeller = "/path/to/nested/modeller/**"
+sample modeller, 0
+
+Son olarak, ilk önce kaynakların gitmesi gerektiğini unutmayın. Herhangi bir kaynak belirtilmezse, yerleşik örneklem grubu birlikte çalışılacak adayların varsayılan listesi olarak seçilecektir.
+
+
+FİLTRELER (Filters)
+Bir aday listeniz varsa şu filtreleme türlerini kullanabilirsiniz:
+	. "foo" Dizeler, dosya adındaki alt dize oluşumuna (eksi dizin yolu ve uzantı) filtre uygular.
+	. / fo [oO] / Normal İfadeler, dosya adının (eksi dizin yolu ve uzantısı) desen eşleşmesine filtre uygular.
+	. : foo - Anahtar kelimeler adayları, anahtar kelimenin dosya adıyla doğrudan eşleşip eşleşmediği konusunda filtreleyecektir (eksi dizin yolu ve uzantısı).
+	. lambda {| a | ...} - Bir argüman olan işlemler aday filtre veya jeneratör işlevi olarak değerlendirilir. Mevcut adayların listesinden geçirilecek ve yeni bir aday listesi (örnek dosyalara uygulanan geçerli yolların bir listesi) geri göndermesi gerekir.
+	. 1 - Rakamlar bu indekse sahip adayı seçecektir (gerekirse bir halka gibi sarma).
+
+KARIŞIMLAR (Composites)
+Son olarak, kaynak veya filtre yerleştirebileceğiniz her yerde listeleri kullanabilirsiniz. Liste otomatik olarak düzleştirilecek ve içerik düzenli kaynaklar ve filtreler olarak değerlendirilecektir. Bu nedenle aşağıdaki model çağrıları anlamsal olarak eşdeğerdir:
+
+sample "/path/to/dir", "100", "C#"
+sample ["/path/to/dir", "100", "C#"]
+sample "/path/to/dir", ["100", "C#"]
+sample ["/path/to/dir", ["100", ["C#"]]]
+
+SARMA (Wrapping Up)
+Bu, model paketleri işlemek ve kullanmak için gerçek güce ihtiyaç duyan insanlar için gelişmiş bir bölümdü. Bu bölümün çoğu çok fazla anlam ifade etmiyorsa, endişelenmeyin. Henüz bu işlevselliğin hiçbirine ihtiyacınız yok. Ancak, ne zaman ihtiyacınız olduğunu bilirsiniz ve büyük örneklem dizinleriyle çalışmaya başladığınızda geri dönüp tekrar okuyabilirsiniz.
+
+'''
+
+
+ 
+
+
