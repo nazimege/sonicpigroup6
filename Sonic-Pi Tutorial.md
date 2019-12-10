@@ -1,4 +1,4 @@
-#__GİRİŞ__
+# __GİRİŞ__
 Sonic Pi’a hoş geldiniz. Umarım siz de çılgın müzikler yapmaya başlamak için, benim size öğretmek için heyecanlı olduğum kadar heyecanlısınızdır. Müzik, sentez, programlama, kompozisyon, performans ve daha fazlasına doğru eğlenceli bir yolculuğa başlıyoruz.
 
 Fakat durun, ne kadar da kabayım! Kendimi tanıtmama izin verin – Ben Sam Aaron – Sonic Pi’ı yaratan kişiyim. Beni Twitter’dan @samaaron adıyla bulabilirsiniz, size selam vermekten mutluluk duyarım. Ayrıca, seyirci önünde Sonic Pi ile kodlayarak canlı müzik yapma performansımı da görmek isteyebilirsiniz.
