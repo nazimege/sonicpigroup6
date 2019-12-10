@@ -84,7 +84,9 @@ Ee, daha ne duruyorsunuz…
 
 ## __1.2– Sonic Pi Ara yüzü__
 
-Sonic Pi müzik kodlamak için çok basit bir ara yüze sahip. Haydi biraz zaman geçirerek keşfedelim.
+Sonic Pi müzik kodlamak için çok basit bir ara yüze sahip. Haydi biraz zaman geçirerek keşfedelim.  
+
+![alt text](https://sonic-pi.net/media/images/tutorial/GUI.png)  
 
  
 
