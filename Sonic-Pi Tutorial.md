@@ -65,9 +65,9 @@ Run tuşuna basıp değiştirdiğiniz şeyin sonraki döngü başlangıcında se
 
 live_loop :guit do  
   with_fx :echo, mix: 0.3, phase: 0.25 do  
-    sample :guit_em9, rate: 0.5  
+<p>sample :guit_em9, rate: 0.5</p>  
   end  
-   #sample :guit_em9, rate: -0.5  
+<p>#sample :guit_em9, rate: -0.5</p>  
   sleep 8  
 end    
     
