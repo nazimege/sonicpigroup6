@@ -38,11 +38,9 @@ Tamam, bu yeterince basitti. Haydi mix’e başka şeyler ekleyelim. sample :bd_
 
 live_loop :flibble do
 
-   sample, rate: 0.3
-
-   sample :bd_haus, rate: 1
-
-   sleep 1
+  sample, rate: 0.3
+  sample :bd_haus, rate: 1
+  sleep 1
 
 end
 
