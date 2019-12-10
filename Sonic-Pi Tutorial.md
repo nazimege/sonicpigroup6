@@ -36,27 +36,25 @@ end.
 
 Tamam, bu yeterince basitti. Haydi mix’e başka şeyler ekleyelim. sample :bd_haus satırının üstüne sample :ambi_choir, rate: 0.3 satırını ekleyin. Kodunuz bu şekilde gözükmeli: 
 
-live_loop :flibble do
-
-  sample, rate: 0.3
-  sample :bd_haus, rate: 1
-  sleep 1
-
-end
-
-Şimdi, biraz kodla vakit geçirin. Değerleri değiştirin – daha yüksek değerler kullandığınızda ne oluyor, daha düşük değerler ya da negatif değerler? :ambi_choir için rate: değerini değiştirdiğinizde (mesela 0.29) ne olduğunu görün. Çok çok küçük bir değeri seçerseniz ne oluyor? Eğer çok küçük bir değer verirseniz bilgisayarınız ritme yetişemeyip bir hata vererek duracaktır (eğer bu olursa daha büyük bir sleep değeriyle programı tekrardan çalıştırın).
+live_loop :flibble do  
+  sample, rate: 0.3  
+  sample :bd_haus, rate: 1  
+  sleep 1  
+end  
+  
+Şimdi, biraz kodla vakit geçirin. Değerleri değiştirin – daha yüksek değerler kullandığınızda ne oluyor, daha düşük değerler ya da negatif değerler? :ambi_choir için rate: değerini değiştirdiğinizde (mesela 0.29) ne olduğunu görün. Çok çok küçük bir değeri seçerseniz ne oluyor? Eğer çok küçük bir değer verirseniz bilgisayarınız ritme yetişemeyip bir hata vererek duracaktır (eğer bu olursa daha büyük bir sleep değeriyle programı tekrardan çalıştırın).  
 
 Sample satırlarından birine  # ekleyerek yoruma dönüştürün, böylece kodunuzdan çıkmış olacak:
 
-live_loop :flibble do
-  sample :ambi_choir, rate: 0.3
-  #sample :bd_haus, rate: 1
-  sleep 1
-end
+live_loop :flibble do  
+  sample :ambi_choir, rate: 0.3  
+  #sample :bd_haus, rate: 1  
+  sleep 1  
+end  
 
-Bilgisayarınızın o satırı nasıl görmezden geldiğini fark ettiniz mi, böylece o satırı duymuyoruz. Buna yorum denir. Sonic Pi’da yorumları kodumuzdan bir şeyler çıkarmak ya da kodumuza bir şeyler eklemek için kullanabiliriz. 
-
-Son olarak, size oynaması eğlenceli olacak bir şey bırakmama izin verin. Aşağıdaki kodu alıp farklı bir katmana kopyalayın. Şimdi, çok fazla anlamaya çalışmadan sadece iki tane farklı döngü olduğunu görün – yani iki şey aynı anda devam ediyor. Şimdi, en iyi yaptığınız şeyi yapın – deneyin ve oynayın. İşte birkaç tavsiye:
+Bilgisayarınızın o satırı nasıl görmezden geldiğini fark ettiniz mi, böylece o satırı duymuyoruz. Buna yorum denir. Sonic Pi’da yorumları kodumuzdan bir şeyler çıkarmak ya da kodumuza bir şeyler eklemek için kullanabiliriz.   
+  
+Son olarak, size oynaması eğlenceli olacak bir şey bırakmama izin verin. Aşağıdaki kodu alıp farklı bir katmana kopyalayın. Şimdi, çok fazla anlamaya çalışmadan sadece iki tane farklı döngü olduğunu görün – yani iki şey aynı anda devam ediyor. Şimdi, en iyi yaptığınız şeyi yapın – deneyin ve oynayın. İşte birkaç tavsiye:  
 
 +	Mavi rate: değerlerini değiştirip sesin nasıl değiştiğine bakın.
 +	Sleep değerlerini değiştirerek iki döngünün de nasıl birbiri etrafında farklı
@@ -65,20 +63,20 @@ Son olarak, size oynaması eğlenceli olacak bir şey bırakmama izin verin. Aş
 
 Run tuşuna basıp değiştirdiğiniz şeyin sonraki döngü başlangıcında sesteki etkisini görün. Eğer bir şekilde zor durumda kalırsanız endişelenmeyin, sadece Stop tuşuna basın, kodu silip değiştirilmemiş halini tekrardan yapıştırın. Böylece tekrar doğaçlamaya başlayabilirsiniz. Hata yapmak öğrenmenin en kısa yoludur…
 
-live_loop :guit do
-  with_fx :echo, mix: 0.3, phase: 0.25 do
-    sample :guit_em9, rate: 0.5
-  end
-#  sample :guit_em9, rate: -0.5
-  sleep 8
-end
-
-live_loop :boom do
-  with_fx :reverb, room: 1 do
-    sample :bd_boom, amp: 10, rate: 1
-  end
-  sleep 8
-end
+live_loop :guit do  
+  with_fx :echo, mix: 0.3, phase: 0.25 do  
+    sample :guit_em9, rate: 0.5  
+  end  
+   #sample :guit_em9, rate: -0.5  
+  sleep 8  
+end    
+    
+live_loop :boom do  
+  with_fx :reverb, room: 1 do  
+    sample :bd_boom, amp: 10, rate: 1  
+  end  
+  sleep 8  
+end  
 
 Şimdi, merakınız tetiklenene ve bununla daha neler yapabileceğinizi düşünmeye başlayana kadar denemeye ve oynamaya devam edin. Şimdi rehberin geri kalanını okumaya hazırsınız.
 
