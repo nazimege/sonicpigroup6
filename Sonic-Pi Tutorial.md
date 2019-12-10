@@ -1,3 +1,3 @@
-[#GİRİŞ](.../blob/develop/Giriş.md)
-[#SENTEZ](.../blop/develop/Sentez.md)
+[GİRİŞ](https://github.com/nazimege/sonicpigroup6/blob/develop/Giri%C5%9F.md)  
+[SENTEZ](https://github.com/nazimege/sonicpigroup6/blob/develop/sentez.md)  
 []
