@@ -39,7 +39,7 @@ Tamam, bu yeterince basitti. Haydi mix’e başka şeyler ekleyelim. sample :bd_
 live_loop :flibble do
 ⋅⋅⋅sample, rate: 0.3⋅⋅
 ⋅⋅⋅sample :bd_haus, rate: 1⋅⋅
-⋅⋅⋅sleep 1..
+⋅⋅⋅sleep 1⋅⋅
 ⋅end⋅⋅
 
 Şimdi, biraz kodla vakit geçirin. Değerleri değiştirin – daha yüksek değerler kullandığınızda ne oluyor, daha düşük değerler ya da negatif değerler? :ambi_choir için rate: değerini değiştirdiğinizde (mesela 0.29) ne olduğunu görün. Çok çok küçük bir değeri seçerseniz ne oluyor? Eğer çok küçük bir değer verirseniz bilgisayarınız ritme yetişemeyip bir hata vererek duracaktır (eğer bu olursa daha büyük bir sleep değeriyle programı tekrardan çalıştırın).
