@@ -21,7 +21,7 @@ __Canlı Döngü__
 
 Haydi başlayalım, aşağıdaki kodu yukarıdaki katmanlardan birine kopyalayın:
 
-live_loop :flibble do
+live_loop - ![#f03c15](https://placehold.it/15/f03c15/000000?:flibble=+) `#f03c15` do
   sample :bd_haus, rate: 1
   sleep 0.5
 end.                                                    
@@ -84,7 +84,9 @@ Ee, daha ne duruyorsunuz…
 
 ## __1.2– Sonic Pi Ara yüzü__
 
-Sonic Pi müzik kodlamak için çok basit bir ara yüze sahip. Haydi biraz zaman geçirerek keşfedelim.
+Sonic Pi müzik kodlamak için çok basit bir ara yüze sahip. Haydi biraz zaman geçirerek keşfedelim.  
+
+![alt text](https://sonic-pi.net/media/images/tutorial/GUI.png)  
 
  
 
