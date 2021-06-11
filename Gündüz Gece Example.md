@@ -1,3 +1,4 @@
+#Lütfen "Raw Lines" modunda inceleyiniz.
 in_thread  do
   sleep 0.5
   loop do
